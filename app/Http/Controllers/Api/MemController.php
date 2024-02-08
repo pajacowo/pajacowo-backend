@@ -28,7 +28,7 @@ class MemController extends Controller
      */
     public function show(string $id)
     {
-        return 'Hello local mem ' . $id;
+        return 'Hello github id ' . $id;
     }
 
     /**
