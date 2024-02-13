@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Models\Mem;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class MemController extends Controller
 {
@@ -12,7 +13,7 @@ class MemController extends Controller
      */
     public function index()
     {
-        return 'Hello github!!!';
+        return Mem::all();
     }
 
     /**
@@ -28,7 +29,7 @@ class MemController extends Controller
      */
     public function show(string $id)
     {
-        return 'Hello github id ' . $id;
+        return Mem::where("id", $id)->first();
     }
 
     /**
