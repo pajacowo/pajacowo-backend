@@ -21,7 +21,18 @@ class MemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $mem = Mem::create([
+            ...$request->validate([
+                "title" => "required|string",
+                "description" => "nullable|string",
+                "upvotes" => "required|integer",
+                "downvotes" => "required|integer",
+                "img" => "required|string",
+            ]),
+            'user_id' => 1
+        ]);
+
+        return $mem;
     }
 
     /**
@@ -35,9 +46,17 @@ class MemController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Mem $mem)
     {
-        //
+        return $mem->update(
+            $request->validate([
+                "title" => "sometimes|string",
+                "description" => "nullable|string",
+                "upvotes" => "sometimes|integer",
+                "downvotes" => "sometimes|integer",
+                "img" => "sometimes|string",
+            ])
+        );
     }
 
     /**
